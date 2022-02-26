@@ -1,0 +1,20 @@
+recipeDefinitionVersionNumber: 1
+title: Ingest JSON Format File
+contributor:
+summary: Ingest JSON format data to create nodes with properties based on the data in each line.
+description:
+ingestStreams:
+  - type: FileIngest
+    path: $in_file
+    format:
+      type: CypherJson
+      query: |-
+        match (n)
+        where id(n) = idFrom($that)
+        set n = $that
+        set event.type_ = 'JSON_event'
+standingQueries: []
+nodeAppearances: []
+quickQueries: []
+sampleQueries: []
+printQueries: []
